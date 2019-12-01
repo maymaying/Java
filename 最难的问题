@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class Solution02 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        while(sc.hasNext()){
+            String value=sc.nextLine();
+            char[] chars=value.toCharArray();//将字符串转换成数组
+            for(int i=0;i<chars.length;i++){
+                char c=chars[i];
+                if('A'<=c){
+                   c=(char)('E'<c?(c-5):(c+21));
+                   chars[i]=c;
+                }
+            }
+            System.out.println(new String(chars));
+        }
+    }
+}
