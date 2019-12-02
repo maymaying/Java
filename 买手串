@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+import java.util.*;
+public class Solution03 {
+    public static void main(String[] args) {
+        treasure();
+    }
+    public static void treasure(){
+        Scanner scanner = new Scanner(System.in);
+        String str = scanner.nextLine();
+        char[] str_ = str.toCharArray();
+        String str1 = scanner.nextLine();
+        char[] str1_ = str1.toCharArray();
+        List list = new ArrayList();
+        for (int i = 0;i < str1_.length;i++){
+            for (int j = 0;j < str_.length;j++){
+                if (str_[j] == str1_[i]){
+                    list.add(str1_[i]);
+                    str_[j] =(char) -1;
+                    break;
+                }
+            }
+        }
+        if (list.size() == str1_.length){
+            int num = str_.length-list.size();
+            System.out.println("Yes"+" "+num);
+        }
+        else {
+            int num = str1_.length-list.size();
+            System.out.println("No"+" "+num);
+        }
+
+    }
+}
