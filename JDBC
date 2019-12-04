@@ -1,0 +1,40 @@
+import java.sql.*;
+
+public class Main {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        // 1.注册Driver
+        Class.forName("com.mysql.jdbc.Driver");
+        // 2.通过DriverManager获取数据库表连接
+        Connection connection=DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/sms?useSSL=false",
+                "root",
+                "maymay0722may");
+        /*
+        Statement statement=connection.createStatement();
+        int rows=statement.executeUpdate("INSERT INTO classes(name) VALUES('Java11班')");
+        System.out.println(rows);
+        statement.close();
+        */
+        //新建一个班级：
+        Statement statement=connection.createStatement();
+        int rows=statement.executeUpdate("INSERT INTO classes(name) VALUES('xiangrikui')");
+        System.out.println(rows);
+
+        /*
+        ResultSet resultSet=statement.executeQuery("SHOW TABLES");
+        while(resultSet.next()){
+            //JDBC,列是从1开始的
+            String tableName=resultSet.getString(1);
+            System.out.println(tableName);
+        }
+        resultSet.close();
+
+        //关闭statement
+        statement.close();
+        */
+
+        //最后关闭连接
+        //System.out.println(connection);
+        connection.close();
+    }
+}
